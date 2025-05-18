@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./components/Button";
 import Card from "./components/Card";
 
@@ -17,6 +17,17 @@ export default function App() {
   ];
 
   const [budget, setBudget] = useState(20000);
+  const [users, setUsers] = useState([]);
+
+  const fetchUsers = () => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   return (
     <div className="min-h-screen p-4 flex flex-col items-center">
@@ -40,6 +51,15 @@ export default function App() {
           .map((el) => {
             return <Card car={el} key={el.id} />;
           })}
+      </div>
+
+      <h2 className="mb-4">List of users</h2>
+      <div className="grid grid-cols-3 gap-4">
+        <ol>
+          {users.map((user) => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ol>
       </div>
     </div>
   );
