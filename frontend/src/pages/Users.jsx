@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { API_URL } from "../lib/constants";
 
 const Users = () => {
   const { jwt, logout } = useAuth();
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
+
+  const API_URL = process.env.REACT_APP_API;
 
   useEffect(() => {
     const fetchUsers = async () => {

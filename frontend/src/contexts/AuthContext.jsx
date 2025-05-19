@@ -1,6 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { API_URL } from "../lib/constants";
-
 
 const AuthContext = createContext();
 
@@ -8,6 +6,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [jwt, setJwt] = useState(null);
   const [message, setMessage] = useState(null);
+
+  const API_URL = process.env.REACT_APP_API;
 
   useEffect(() => {
     const storedJwt = localStorage.getItem("jwt");
