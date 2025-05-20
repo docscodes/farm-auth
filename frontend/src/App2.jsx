@@ -18,16 +18,27 @@ export default function App() {
 
   const [budget, setBudget] = useState(20000);
   const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const fetchUsers = () => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  };
+  // const fetchUsers = () => {
+  //   fetch("https://jsonplaceholder.typicode.com/users")
+  //     .then((res) => res.json())
+  //     .then((data) => setUsers(data));
+  // };
+
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []);
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    fetch(`https://reqres.in/api/users?page=${page}`, {
+      headers: {
+        "x-api-key": "reqres-free-v1",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => setUsers(json["data"]));
+  }, [page]);
 
   return (
     <div className="min-h-screen p-4 flex flex-col items-center">
@@ -53,13 +64,30 @@ export default function App() {
           })}
       </div>
 
-      <h2 className="mb-4">List of users</h2>
+      {/* <h2 className="mb-4">List of users</h2>
       <div className="grid grid-cols-3 gap-4">
         <ol>
           {users.map((user) => (
             <li key={user.id}>{user.name}</li>
           ))}
         </ol>
+      </div> */}
+
+      <div>
+        <button
+          className="border border-gray-500 rounded-md p-2 m-5"
+          onClick={() => {
+            page === 1 ? setPage(2) : setPage(1);
+          }}
+        >
+          Toggle users
+        </button>
+        <ul>
+          {users &&
+            users.map((el) => {
+              return <li key={el.id}>{el.email}</li>;
+            })}
+        </ul>
       </div>
     </div>
   );
