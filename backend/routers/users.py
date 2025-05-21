@@ -4,7 +4,7 @@ from fastapi import APIRouter, Body, Depends, HTTPException, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from authentication import AuthHandler
-from models import UserBase, UserIn, UserOut, UsersList
+from models.users import UserBase, UserIn, UserOut, UsersList
 
 router = APIRouter()
 auth_handler = AuthHandler()
