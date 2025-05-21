@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [jwt, setJwt] = useState(null);
   const [message, setMessage] = useState(null);
 
-  const API_URL = process.env.REACT_APP_API;
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const storedJwt = localStorage.getItem("jwt");
@@ -34,7 +34,6 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const register = async (username, password) => {
-  
     try {
       const response = await fetch(`${API_URL}/users/register`, {
         method: "POST",
@@ -51,7 +50,6 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         setMessage(`Registration failed: ${JSON.stringify(data)}`);
       }
-
     } catch (error) {
       setMessage(`Registration failed: ${JSON.stringify(error)}`);
     }
@@ -67,7 +65,7 @@ export const AuthProvider = ({ children }) => {
       },
       body: JSON.stringify({ username, password }),
     });
-    
+
     if (response.ok) {
       const data = await response.json();
       setJwt(data.token);
@@ -75,7 +73,6 @@ export const AuthProvider = ({ children }) => {
 
       setUser({ username });
       setMessage(`Login successful: token ${data.token.slice(0, 10)}..., user ${username}`);
-      
     } else {
       const data = await response.json();
       setMessage("Login failed: " + data.detail);
@@ -90,11 +87,7 @@ export const AuthProvider = ({ children }) => {
     setMessage("Logout successful");
   };
 
-  return (
-    <AuthContext.Provider value={{ user, jwt, register, login, logout, message, setMessage }}>
-        {children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={{ user, jwt, register, login, logout, message, setMessage }}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => useContext(AuthContext);

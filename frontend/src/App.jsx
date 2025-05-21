@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { AuthProvider } from "./contexts/AuthContext";
-
+import LoginForm from "./components/LoginForm";
 import Message from "./components/Message";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Users from "./pages/Users";
+import RegisterForm from "./components/RegisterForm";
+import UsersList from "./components/UsersList";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(true);
@@ -17,11 +16,11 @@ const App = () => {
         <Message />
 
         <div>
-          {showLogin ? <Login /> : <Register />}
+          {showLogin ? <LoginForm /> : <RegisterForm />}
           <button onClick={() => setShowLogin(!showLogin)}>{showLogin ? "Register" : "Login"}</button>
           <hr />
         </div>
-        <Users />
+        <UsersList />
       </AuthProvider>
     </div>
   );

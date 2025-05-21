@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
-const Users = () => {
+const UsersList = () => {
   const { jwt, logout } = useAuth();
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
 
-  const API_URL = process.env.REACT_APP_API;
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -55,4 +55,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default UsersList;

@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 
-const Login = () => {
+const RegisterForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useAuth();
+  const { register } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(username, password);
-    setUsername('');
-    setPassword('');
+    register(username, password)
+    setUsername('')
+    setPassword('')
   };
 
   return (
@@ -30,10 +30,10 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className='bg-blue-500 text-white rounded'>Login</button>
+        <button type="submit" className='bg-blue-500 text-white rounded'>Register</button>
       </form>
     </div>
   );
 };
 
-export default Login
+export default RegisterForm;
