@@ -1,5 +1,19 @@
-const Header = () => {
-  return <div className="text-3xl border-yellow-500 border-4 p-4">Header</div>;
-};
+import { Link, NavLink } from "react-router-dom";
+import Logo from "../assets/react.svg";
 
-export default Header;
+export const Header = () => {
+  return (
+    <header className="flex justify-between items-center h-16 text-xl text-blue-800 border-b-2">
+      <Link to="/" className="logo flex items-center gap-2">
+        <img src={Logo} alt="Logo" />
+        <span>FARM</span>
+      </Link>
+      <nav className="flex items-center gap-4">
+        <NavLink to="/" end>Login</NavLink>
+        <NavLink to="/register">Register</NavLink>
+        <NavLink to="/users">Users</NavLink>
+        <NavLink to="/cars">Cars</NavLink>
+      </nav>
+    </header>
+  );
+};

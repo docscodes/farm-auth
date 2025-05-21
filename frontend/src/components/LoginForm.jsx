@@ -14,7 +14,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="m-5 p-5  border-2">
+    <div className="m-5 p-5 border-2">
       <form onSubmit={handleSubmit} className='grid grid-rows-3 gap-2'>
         <input
           type="text"
