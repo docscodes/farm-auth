@@ -3,7 +3,7 @@ import Logo from "../assets/react.svg";
 
 export const Header = () => {
   return (
-    <header className="flex justify-between items-center h-16 text-xl text-blue-800 border-b-2">
+    <header className="flex justify-between items-center m-4 h-16 text-2xl text-blue-800 border-b-2">
       <Link to="/" className="logo flex items-center gap-2">
         <img src={Logo} alt="Logo" />
         <span>FARM</span>

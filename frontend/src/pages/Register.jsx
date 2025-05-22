@@ -4,14 +4,12 @@ import { AuthProvider } from "../contexts/AuthContext";
 
 export const Register = () => {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center">
       <AuthProvider>
         <h1 className="text-2xl text-blue-800">Simple Auth App</h1>
         <Message />
-        <div>
-          <RegisterForm />
-          <hr />
-        </div>
+
+        <RegisterForm />
       </AuthProvider>
     </div>
   );

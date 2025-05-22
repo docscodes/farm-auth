@@ -2,5 +2,5 @@ export { CarsList } from "./CarsList";
 export { Login } from "./Login";
 export { PageNotFound } from "./PageNotFound";
 export { Register } from "./Register";
-export { UsersList } from "./UsersList";
+export { Users } from "./Users";
 

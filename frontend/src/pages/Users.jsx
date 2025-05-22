@@ -1,15 +1,13 @@
-import LoginForm from "../components/LoginForm";
 import Message from "../components/Message";
+import UsersList from "../components/UsersList";
 import { AuthProvider } from "../contexts/AuthContext";
 
-export const Login = () => {
+export const Users = () => {
   return (
     <div className="flex flex-col justify-between items-center">
       <AuthProvider>
-        <h1 className="text-2xl text-blue-800">Simple Auth App</h1>
         <Message />
-
-        <LoginForm />
+        <UsersList />
       </AuthProvider>
     </div>
   );
