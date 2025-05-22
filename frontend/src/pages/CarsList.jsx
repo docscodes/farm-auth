@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
 import Card from "../components/Card";
 
 export const CarsList = () => {
@@ -44,7 +43,7 @@ export const CarsList = () => {
     <div className="min-h-screen p-4 flex flex-col items-center">
       <div className="mb-4 space-y-5">
         <h2>Your budget is {budget}</h2>
-        <Button />
+
         <label htmlFor="budget">Budget : </label>
         <input 
           type="number" 

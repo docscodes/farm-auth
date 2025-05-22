@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import Logo from "../assets/react.svg";
+import Logo from "../../assets/react.svg";
 
 export const Header = () => {
   return (
