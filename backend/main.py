@@ -4,7 +4,7 @@ from routers.users import router as users_router
 
 origins = ["*"]
 
-app = FastAPI()
+app = FastAPI(title="farm-auth")
 
 app.add_middleware(
     CORSMiddleware,
